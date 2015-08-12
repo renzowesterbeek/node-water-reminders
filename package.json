@@ -1,0 +1,14 @@
+{
+  "name": "nodewaterreminders",
+  "version": "0.1.0",
+  "description": "Sends you a yo to remind you to drink water",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Renzo Westerbeek",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.60.0"
+  }
+}

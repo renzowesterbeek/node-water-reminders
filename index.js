@@ -7,12 +7,6 @@ function yoAll(){
   });
 }
 
-function writeLog(data){
-  fs.appendFile('log.txt', data, function (err) {
-    if (err) throw err;
-  });
-}
-
 function zerofix(number){
   if(number < 10){
     return "0" + number
@@ -21,9 +15,17 @@ function zerofix(number){
   }
 }
 
+function writeLog(data){
+  var date = new Date();
+  var timestamp = date.getDate() + "-" + parseInt(date.getMonth()+1) + ", " + zerofix(date.getHours()) + ":" + zerofix(date.getMinutes());
+  var writedata = timestamp + " - " + data + '\n';
+  fs.appendFile('log.txt', writedata, function (err) {
+    if (err) throw err;
+  });
+}
+
 var lasttimecheck = "";
 setInterval(function(){
-  writeLog("polling");
   var date = new Date();
   var time = zerofix(date.getHours()) + ":" + zerofix(date.getMinutes());
 
@@ -40,6 +42,7 @@ setInterval(function(){
     // Check for time in list
     if(timelist.indexOf(time) >= 0){
       console.log("Sending yo");
+      writeLog("Sending yo");
       yoAll();
     }
     lasttimecheck = time;
